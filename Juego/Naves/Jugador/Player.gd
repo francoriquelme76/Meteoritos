@@ -9,8 +9,17 @@ export var potencia_rotacion:int = 200
 var dir_rotacion:int = 0
 var empuje:Vector2 = Vector2.ZERO
 
-##Atributos Cannon
+##Atributos onready
 onready var cannon:Cannon = $Cannon
+onready var laser:Laser = $LaserBeam2D
+
+##Metodos
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("disparo_secundario"):
+		laser.set_is_casting(true)
+	if event.is_action_released("disparo_secundario"):
+		laser.set_is_casting(false)
+
 
 ##Metodos
 func _integrate_forces(state: Physics2DDirectBodyState) -> void:

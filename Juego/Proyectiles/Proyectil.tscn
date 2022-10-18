@@ -11,6 +11,7 @@ scale = Vector2( 1.3, 1.2 )
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 4, 1, 1, 1 )
 rotation = 1.5708
 texture = ExtResource( 1 )
 
@@ -18,7 +19,6 @@ texture = ExtResource( 1 )
 modulate = Color( 0.0235294, 0.0235294, 0.0235294, 1 )
 position = Vector2( 9.16994e-08, 2.38418e-07 )
 rotation = 1.5708
-scale = Vector2( 1, 1 )
 shape = SubResource( 1 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
