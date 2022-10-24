@@ -1,15 +1,21 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Juego/Naves/Jugador/player_red.png" type="Texture" id=1]
 [ext_resource path="res://Juego/Naves/Jugador/MaterialFisico.tres" type="PhysicsMaterial" id=2]
 [ext_resource path="res://Juego/Naves/Jugador/Player.gd" type="Script" id=3]
 [ext_resource path="res://Juego/Proyectiles/Cannon.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Juego/Proyectiles/Laser/LaserBeam2D.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Juego/Proyectiles/ProyectilPlayer.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Juego/Naves/Jugador/Trail/Trail2D.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Juego/Naves/Jugador/Motor/MotorSFX.tscn" type="PackedScene" id=8]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 32.0156
 
 [node name="Player" type="RigidBody2D"]
+z_index = 50
+z_as_relative = false
+collision_mask = 22
 physics_material_override = ExtResource( 2 )
 gravity_scale = 0.0
 can_sleep = false
@@ -26,6 +32,7 @@ position = Vector2( -2, 4 )
 shape = SubResource( 1 )
 
 [node name="Cannon" parent="." instance=ExtResource( 4 )]
+proyectil = ExtResource( 6 )
 
 [node name="PuntoIzquierdo" parent="Cannon" index="0"]
 position = Vector2( 13, -14 )
@@ -38,5 +45,23 @@ position = Vector2( -1, 0 )
 
 [node name="LaserBeam2D" parent="." instance=ExtResource( 5 )]
 position = Vector2( 41, 0 )
+z_index = 41
+z_as_relative = false
+
+[node name="TrailInicio" type="Position2D" parent="."]
+position = Vector2( -4, 0 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Trail2D" parent="TrailInicio" instance=ExtResource( 7 )]
+points = PoolVector2Array( 0, 0, 60, 0 )
+width = 50.0
+is_emitting = true
+lifetime = 0.6
+max_points = 150
+target_path = NodePath("..")
+
+[node name="MotorSFX" parent="." instance=ExtResource( 8 )]
 
 [editable path="Cannon"]

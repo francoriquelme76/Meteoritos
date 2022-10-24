@@ -113,3 +113,4 @@ texture = ExtResource( 2 )
 
 [node name="Laser_SFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
+bus = "SFX"
